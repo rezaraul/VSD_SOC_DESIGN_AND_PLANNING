@@ -2,7 +2,7 @@
 # Day 1
 OpenLane is an open-source flow automation tool designed to facilitate the design and implementation of digital integrated circuits. Developed by Efabless in collaboration with the open-source hardware community, OpenLane integrates various open-source tools into a single flow for ASIC design.
 
-OpenLane is already installed on the Ubuntu system, which is running on a virtual machine that provided by VSD corporation. All relevant files are located in the "work" folder on the desktop.
+OpenLane is already installed on the Ubuntu system, which is running on a virtual machine. All relevant files are located in the "work" folder on the desktop.
 
 ![App Screenshot](https://github.com/rezaraul/VSD_SOC_DESIGN_AND_PLANNING/blob/main/images/1.JPG)
 
@@ -59,9 +59,50 @@ Preparation is complete, and the next step involves synthesis, which is initiate
 % run_synthesis
 ```
 This process will take some time. Upon successful completion without errors, it will indicate success.
-
 ![App Screenshot](https://github.com/rezaraul/VSD_SOC_DESIGN_AND_PLANNING/blob/main/images/5.JPG)
 
 In this workshop, for Lab 1, we were required to calculate the flop ratio, which is the number of flip-flops divided by the number of cells used in the design. The flop ratio is 0.1084, or 10.84%.
-
 ![App Screenshot](https://github.com/rezaraul/VSD_SOC_DESIGN_AND_PLANNING/blob/main/images/7.JPG)
+
+# Day 2
+
+This part of the workshop focuses on designing the chip's floorplan. We will set the die and core area, aspect ratio, and utilization factor. We will also place the input-output cells and create the power distribution network and macro placement. Standard cells are not placed at this stage; they will be placed during the placement stage. 
+
+Before running the command to create the floorplan, there are many switches that can be set. These switches are variables detailed in the README file located in the configuration folder of the openlane directory. You can set these switches in the floorplan.tcl file in the same folder. Similar to other sections, this file has the lowest priority. Here is the priority list from lowest to highest:
+1. floorplan.tcl
+2. config.tcl
+3. sky130A_sky130_fd_sc_hd_config (highest priority)
+
+![App Screenshot](https://github.com/rezaraul/VSD_SOC_DESIGN_AND_PLANNING/blob/main/images/8.JPG)
+
+To generate the floorplan, run the following command:
+```
+% run_floorplan
+```
+No errors indicate that it was done correctly and the flow successfully specified the floorplan.
+
+![App Screenshot](https://github.com/rezaraul/VSD_SOC_DESIGN_AND_PLANNING/blob/main/images/9.JPG)
+
+![App Screenshot](https://github.com/rezaraul/VSD_SOC_DESIGN_AND_PLANNING/blob/main/images/10.JPG)
+
+The results can be found in the floorplan folder at this address: /Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/11-07_23-11/logs/floorplan.
+
+![App Screenshot](https://github.com/rezaraul/VSD_SOC_DESIGN_AND_PLANNING/blob/main/images/11.JPG)
+
+If we go to the results folder, we can find a DEF file for the project. Opening this file reveals various details, including the die area, which in this case is 660.685um by 671.405um.
+
+![App Screenshot](https://github.com/rezaraul/VSD_SOC_DESIGN_AND_PLANNING/blob/main/images/12.JPG)
+
+To visualize the actual layout of the floorplan, we can use Magic by running the following command:
+
+```
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
+```
+![App Screenshot](https://github.com/rezaraul/VSD_SOC_DESIGN_AND_PLANNING/blob/main/images/13.JPG)
+
+
+
+
+
+
+
