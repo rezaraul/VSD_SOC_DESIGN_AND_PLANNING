@@ -59,7 +59,9 @@ Preparation is complete, and the next step involves synthesis, which is initiate
 % run_synthesis
 ```
 This process will take some time. Upon successful completion without errors, it will indicate success.
+
 ![App Screenshot](https://github.com/rezaraul/VSD_SOC_DESIGN_AND_PLANNING/blob/main/images/5.JPG)
 
 In this workshop, for Lab 1, we were required to calculate the flop ratio, which is the number of flip-flops divided by the number of cells used in the design. The flop ratio is 0.1084, or 10.84%.
+
 ![App Screenshot](https://github.com/rezaraul/VSD_SOC_DESIGN_AND_PLANNING/blob/main/images/7.JPG)
