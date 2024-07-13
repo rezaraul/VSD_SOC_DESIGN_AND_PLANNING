@@ -93,12 +93,26 @@ If we go to the results folder, we can find a DEF file for the project. Opening 
 
 ![App Screenshot](https://github.com/rezaraul/VSD_SOC_DESIGN_AND_PLANNING/blob/main/images/12.JPG)
 
-To visualize the actual layout of the floorplan, we can use Magic by running the following command in floorplan folder inside results folder:
+To visualize the actual layout of the floorplan, we can use Magic by running the following command:
 
 ```
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
 ```
 ![App Screenshot](https://github.com/rezaraul/VSD_SOC_DESIGN_AND_PLANNING/blob/main/images/13.JPG)
+
+The next stage after floor planning is the placement stage, which occurs in two phases: global placement and detailed placement. The main objective of global placement is to reduce the wire lengths. To execute this stage, we need to run the following command:
+```
+run_placement
+```
+![App Screenshot](https://github.com/rezaraul/VSD_SOC_DESIGN_AND_PLANNING/blob/main/images/14.JPG)
+
+To visualize the layout after placement, navigate to the placement folder and execute the following command:
+```
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+```
+![App Screenshot](https://github.com/rezaraul/VSD_SOC_DESIGN_AND_PLANNING/blob/main/images/15.JPG)
+
+
 
 
 
